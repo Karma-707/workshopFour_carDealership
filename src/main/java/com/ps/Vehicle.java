@@ -22,7 +22,6 @@ public class Vehicle {
         this.price = price;
     }
 
-
     //getter
     public int getVin() {
         return vin;
@@ -89,6 +88,7 @@ public class Vehicle {
         this.price = price;
     }
 
+    //toString print to screen
     @Override
     public String toString() {
         return String.format("Vin: %-6d Year: %-5d Make: %-10s Model: %-10s Vehicle Type: %-6s Color: %-10s Odometer: %-10d Price: $%.2f\n",

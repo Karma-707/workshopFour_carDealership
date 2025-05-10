@@ -18,9 +18,19 @@ public class Dealership {
         this.inventory = new ArrayList<>();
     }
 
+    //get vehicles by price range input
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
         //make new array list and put filter in it n return that
         ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
+
+        for(Vehicle vehicle: inventory) {
+            double vehiclePrice = vehicle.getPrice();
+            //add vehicle to array list if within user range
+            if((vehiclePrice >= min) && (vehiclePrice <= max)) {
+                filteredVehicles.add(vehicle);
+            }
+        }
+
         return filteredVehicles;
     }
 
@@ -51,10 +61,12 @@ public class Dealership {
         return inventory;
     }
 
+    //add vehicle to inventory
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
     }
 
+    //remove vehicle from inventory
     public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
     }

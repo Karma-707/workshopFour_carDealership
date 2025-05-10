@@ -77,27 +77,26 @@ public class UserInterface {
         } while (mainMenuCommand != 0);
     }
 
+    //print price by user range
     private void processGetByPriceRequest() {
         System.out.println("Price Request Filter");
-        System.out.print("Enter starting price: ");
+
+        //ask the user for a starting price & ending price
+        System.out.print("Enter minimum price: ");
         double minPrice = scanner.nextDouble();
-        System.out.print("Enter ending price: ");
+        System.out.print("Enter maximum price: ");
         double maxPrice = scanner.nextDouble();
 
-
-
-        //TODO: ask the user for a starting price & ending price
         ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByPrice(minPrice, maxPrice);
 
-        //Display vehicles = print
+        //Display vehicles filtered by price
         if(filteredVehicles.isEmpty()) {
             System.out.println("No vehicles found in that price range");
         }
         else {
-            //TODO: Print using method
+            System.out.println("Displaying Filtered Price Range");
             displayVehicles(filteredVehicles);
         }
-
     }
 
     private void processGetByMakeModelRequest() {
@@ -140,20 +139,8 @@ public class UserInterface {
     private static void displayVehicles(ArrayList<Vehicle> vehicles) {
         for(Vehicle vehicle: vehicles) {
             System.out.print(vehicle);
-//            System.out.printf("Vin: %-6d Year: %-5d Make: %-10s Model: %-10s Vehicle Type: %10s Color: %s Odometer: %-10d Price: %.2f\n",
-//                    vehicle.getVin(),
-//                    vehicle.getYear(),
-//                    vehicle.getMake(),
-//                    vehicle.getModel(),
-//                    vehicle.getVehicleType(),
-//                    vehicle.getColor(),
-//                    vehicle.getOdometer(),
-//                    vehicle.getPrice()
-//            );
         }
     }
-
-
 
 
 }
