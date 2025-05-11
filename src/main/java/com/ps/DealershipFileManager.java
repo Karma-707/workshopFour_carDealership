@@ -50,7 +50,7 @@ public class DealershipFileManager {
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventoryTest.csv"));
 
-            String firstLine = String.format("%s|%s|%s",
+            String firstLine = String.format("%s|%s|%s\n",
                     dealership.getName(),
                     dealership.getAddress(),
                     dealership.getPhone());
@@ -60,7 +60,7 @@ public class DealershipFileManager {
             ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
 
             for(Vehicle vehicle: vehicles) {
-                String vehicleLine = String.format("%d|%d|%s|%s|%s|%s|%d|%f\n",
+                String vehicleLine = String.format("%d|%d|%s|%s|%s|%s|%d|%.2f\n",
                         vehicle.getVin(),
                         vehicle.getYear(),
                         vehicle.getMake(),
