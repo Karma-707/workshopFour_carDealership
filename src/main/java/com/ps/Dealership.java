@@ -78,6 +78,7 @@ public class Dealership {
         return filteredVehicles;
     }
 
+    //get vehicle by color
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
         ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
 
@@ -96,12 +97,21 @@ public class Dealership {
         return filteredVehicles;
     }
 
-    //TODO methods
+    //get vehicle by mileage/aka odometer
     public ArrayList<Vehicle> getVehiclesByMileage(double min, double max) {
-        return null;
+        ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
 
+        for(Vehicle vehicle: inventory) {
+            double vehicleMileage = vehicle.getOdometer();
+            //add vehicle if within range
+            if((vehicleMileage >= min) && (vehicleMileage <= max)) {
+                filteredVehicles.add(vehicle);
+            }
+        }
+        return filteredVehicles;
     }
 
+    //TODO methods
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
         return null;
 

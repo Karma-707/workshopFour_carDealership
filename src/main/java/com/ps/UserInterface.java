@@ -193,7 +193,24 @@ public class UserInterface {
     }
 
     private void processGetByMileageRequest() {
+        System.out.println("Mileage Request Filter");
 
+        //ask user for mileage range to filter
+        System.out.print("Enter Minimum Mileage: ");
+        double minMileage = scanner.nextDouble();
+        System.out.print("Enter Maximum Mileage: ");
+        double maxMileage = scanner.nextDouble();
+
+        ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByMileage(minMileage, maxMileage);
+
+        //display vehicles filtered by mileage range
+        if(filteredVehicles.isEmpty()) {
+            System.out.println("No vehicles found in that mileage range");
+        }
+        else {
+            System.out.println("Displaying Filtered Mileage Range");
+            displayVehicles(filteredVehicles);
+        }
     }
 
     private void processGetByVehicleTypeRequest() {
