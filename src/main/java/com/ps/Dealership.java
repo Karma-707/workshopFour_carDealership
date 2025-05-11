@@ -63,12 +63,22 @@ public class Dealership {
         return filteredVehicles;
     }
 
-    //TODO methods
-
+    //get vehicle by year range
     public ArrayList<Vehicle> getVehiclesByYear(double min, double max) {
-        return null;
+        ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
 
+        for(Vehicle vehicle: inventory) {
+            double vehicleYear = vehicle.getYear();
+            //add vehicle if within range
+            if((vehicleYear >= min) && (vehicleYear <= max)) {
+                filteredVehicles.add(vehicle);
+            }
+        }
+
+        return filteredVehicles;
     }
+
+    //TODO methods
 
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
         return null;

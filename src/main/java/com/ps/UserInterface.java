@@ -89,7 +89,7 @@ public class UserInterface {
 
         ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByPrice(minPrice, maxPrice);
 
-        //Display vehicles filtered by price
+        //display vehicles filtered by price
         if(filteredVehicles.isEmpty()) {
             System.out.println("No vehicles found in that price range");
         }
@@ -112,7 +112,7 @@ public class UserInterface {
 
         ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByMakeModel(make, model);
 
-        //Display vehicles filtered by make/model
+        //display vehicles filtered by make/model
         if(make.isEmpty() && model.isEmpty()) {
             System.out.println("You didn't enter any make or model to display");
         }
@@ -146,8 +146,26 @@ public class UserInterface {
 
     }
 
+    //print year by user request
     private void processGetByYearRequest() {
+        System.out.println("Year Request Filter");
 
+        //ask user for year range to filter
+        System.out.print("Enter Minimum Year: ");
+        double minYear = scanner.nextDouble();
+        System.out.print("Enter Maximum Year: ");
+        double maxYear = scanner.nextDouble();
+
+        ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByYear(minYear, maxYear);
+
+        //display vehicles filtered by year range
+        if(filteredVehicles.isEmpty()) {
+            System.out.println("No vehicles found in that year range");
+        }
+        else {
+            System.out.println("Displaying Filtered Year Range");
+            displayVehicles(filteredVehicles);
+        }
     }
 
     private void processGetByColorRequest() {
