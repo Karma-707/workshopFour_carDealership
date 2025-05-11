@@ -243,6 +243,7 @@ public class UserInterface {
         displayVehicles(vehicles);
     }
 
+    //add vehicles to csv and dealership list
     private void processAddVehicleRequest() {
         System.out.println("Vehicle Add Request");
         System.out.print("Enter VIN: ");
@@ -276,8 +277,32 @@ public class UserInterface {
         System.out.println("Vehicle added successfully!");
     }
 
+    //remove vehicles to csv and dealership list
     private void processRemoveVehicleRequest() {
+        System.out.println("Vehicle Remove Request");
+        System.out.print("Enter VIN: ");
+        int vin = scanner.nextInt();
 
+        ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
+        Vehicle vehicleToRemove = null;
+
+        //find vehicle using VIN
+        for(Vehicle vehicle: vehicles) {
+            if(vehicle.getVin() == vin) {
+                vehicleToRemove = vehicle;
+                break;
+            }
+        }
+
+        //check if there is such vehicle and display results
+        if(vehicleToRemove == null) {
+            System.out.println("No vehicles found with that VIN");
+        }
+        else {
+            dealership.removeVehicle(vehicleToRemove);
+            DealershipFileManager.saveDealership(dealership);
+            System.out.println("Vehicle removed successfully!");
+        }
     }
 
 
