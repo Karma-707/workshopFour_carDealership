@@ -1,5 +1,6 @@
 package com.ps;
 
+import java.lang.invoke.VarHandle;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -180,7 +181,7 @@ public class UserInterface {
         ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByColor(color);
 
         //display vehicles filtered by color
-        if(color.isEmpty()) {
+        if(color.isEmpty()) { //TODO remove this after validation
             System.out.println("You didn't enter any color to display");
         }
         else if(filteredVehicles.isEmpty()) {
@@ -192,6 +193,7 @@ public class UserInterface {
         }
     }
 
+    //display vehicles filtered by mileage
     private void processGetByMileageRequest() {
         System.out.println("Mileage Request Filter");
 
@@ -213,8 +215,25 @@ public class UserInterface {
         }
     }
 
+    //display vehicles filtered by type
     private void processGetByVehicleTypeRequest() {
+        System.out.println("Vehicle Type Request Filter");
+        scanner.nextLine(); //eat white space
 
+        //ask user for vehicle type to filter
+        System.out.print("Enter Vehicle Type: ");
+        String vehicleType = scanner.nextLine().trim();
+
+        ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByType(vehicleType);
+
+        //display vehicles filtered by type
+        if(filteredVehicles.isEmpty()) {
+            System.out.println("No vehicles found in that type");
+        }
+        else {
+            System.out.println("Displaying Filtered Vehicle Type");
+            displayVehicles(filteredVehicles);
+        }
     }
 
     //print all vehicles

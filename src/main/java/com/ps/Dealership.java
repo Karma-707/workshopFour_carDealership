@@ -85,7 +85,7 @@ public class Dealership {
         for(Vehicle vehicle: inventory) {
             String vehicleColor = vehicle.getColor().toLowerCase();
 
-            if(color.isEmpty()) {
+            if(color.isEmpty()) { //TODO remove after validation
                 return filteredVehicles;
             }
             else if (vehicleColor.contains(color.toLowerCase())) {
@@ -93,7 +93,6 @@ public class Dealership {
             }
 
         }
-
         return filteredVehicles;
     }
 
@@ -113,8 +112,16 @@ public class Dealership {
 
     //TODO methods
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
-        return null;
+        ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
 
+        for(Vehicle vehicle: inventory) {
+            String type = vehicle.getVehicleType().toLowerCase();
+
+            if(type.contains(vehicleType.toLowerCase())) {
+                filteredVehicles.add(vehicle);
+            }
+        }
+        return filteredVehicles;
     }
 
 
