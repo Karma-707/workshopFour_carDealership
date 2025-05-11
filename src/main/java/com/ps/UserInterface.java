@@ -168,8 +168,28 @@ public class UserInterface {
         }
     }
 
+    //print color by user request
     private void processGetByColorRequest() {
+        System.out.println("Color Request Filter");
+        scanner.nextLine(); //eat white space
 
+        //ask user for color to filter
+        System.out.print("Enter Color: ");
+        String color = scanner.nextLine().trim();
+
+        ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByColor(color);
+
+        //display vehicles filtered by color
+        if(color.isEmpty()) {
+            System.out.println("You didn't enter any color to display");
+        }
+        else if(filteredVehicles.isEmpty()) {
+            System.out.println("No vehicles found in that color");
+        }
+        else {
+            System.out.println("Displaying Filtered Color");
+            displayVehicles(filteredVehicles);
+        }
     }
 
     private void processGetByMileageRequest() {

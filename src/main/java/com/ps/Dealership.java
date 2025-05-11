@@ -78,13 +78,25 @@ public class Dealership {
         return filteredVehicles;
     }
 
-    //TODO methods
-
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
-        return null;
+        ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
 
+        for(Vehicle vehicle: inventory) {
+            String vehicleColor = vehicle.getColor().toLowerCase();
+
+            if(color.isEmpty()) {
+                return filteredVehicles;
+            }
+            else if (vehicleColor.contains(color.toLowerCase())) {
+                filteredVehicles.add(vehicle);
+            }
+
+        }
+
+        return filteredVehicles;
     }
 
+    //TODO methods
     public ArrayList<Vehicle> getVehiclesByMileage(double min, double max) {
         return null;
 
