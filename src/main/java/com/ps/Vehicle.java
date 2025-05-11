@@ -91,7 +91,7 @@ public class Vehicle {
     //toString print to screen
     @Override
     public String toString() {
-        return String.format("Vin: %-6d Year: %-5d Make: %-10s Model: %-10s Vehicle Type: %-6s Color: %-10s Odometer: %-10d Price: $%.2f\n",
+        return String.format("🚗 VIN: %-6d  📅 Year: %-5d  🏷️ Make: %-10s  🚘 Model: %-10s  🚙 Type: %-8s  🎨 Color: %-10s  🛣️ Odometer: %-8d  💰 Price: $%.2f\n",
                 this.vin,
                 this.year,
                 this.make,

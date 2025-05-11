@@ -42,10 +42,7 @@ public class Dealership {
             String vehicleMake = vehicle.getMake().toLowerCase();
             String vehicleModel = vehicle.getModel().toLowerCase();
 
-            if(make.isEmpty() && model.isEmpty()) {
-                return filteredVehicles;
-            }
-            else if (!make.isEmpty() && model.isEmpty()) {
+            if (!make.isEmpty() && model.isEmpty()) {
                 if(vehicleMake.contains(make.toLowerCase())) {
                     filteredVehicles.add(vehicle);
                 }
@@ -85,10 +82,7 @@ public class Dealership {
         for(Vehicle vehicle: inventory) {
             String vehicleColor = vehicle.getColor().toLowerCase();
 
-            if(color.isEmpty()) { //TODO remove after validation
-                return filteredVehicles;
-            }
-            else if (vehicleColor.contains(color.toLowerCase())) {
+            if (vehicleColor.contains(color.toLowerCase())) {
                 filteredVehicles.add(vehicle);
             }
 
@@ -110,7 +104,7 @@ public class Dealership {
         return filteredVehicles;
     }
 
-    //TODO methods
+    //get vehicle by type
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
         ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
 
