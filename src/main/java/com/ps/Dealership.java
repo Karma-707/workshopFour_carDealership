@@ -34,27 +34,57 @@ public class Dealership {
         return filteredVehicles;
     }
 
+    //get vehicles by make/model
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
+        ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
+
+        for(Vehicle vehicle: inventory) {
+            String vehicleMake = vehicle.getMake().toLowerCase();
+            String vehicleModel = vehicle.getModel().toLowerCase();
+
+            if(make.isEmpty() && model.isEmpty()) {
+                return filteredVehicles;
+            }
+            else if (!make.isEmpty() && model.isEmpty()) {
+                if(vehicleMake.contains(make.toLowerCase())) {
+                    filteredVehicles.add(vehicle);
+                }
+            } else if (make.isEmpty() && !model.isEmpty()) {
+                if(vehicleModel.contains(model.toLowerCase())) {
+                    filteredVehicles.add(vehicle);
+                }
+            }
+            else {
+                if(vehicleMake.contains(make.toLowerCase()) && vehicleModel.contains(model.toLowerCase())) {
+                    filteredVehicles.add(vehicle);
+                }
+            }
+        }
+        return filteredVehicles;
+    }
+
     //TODO methods
-//    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
-//
-//    }
-//
-//    public ArrayList<Vehicle> getVehiclesByYear(double min, double max) {
-//
-//    }
-//
-//    public ArrayList<Vehicle> getVehiclesByColor(String color) {
-//
-//    }
-//
-//    public ArrayList<Vehicle> getVehiclesByMileage(double min, double max) {
-//
-//    }
-//
-//    public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
-//
-//    }
-//
+
+    public ArrayList<Vehicle> getVehiclesByYear(double min, double max) {
+        return null;
+
+    }
+
+    public ArrayList<Vehicle> getVehiclesByColor(String color) {
+        return null;
+
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMileage(double min, double max) {
+        return null;
+
+    }
+
+    public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
+        return null;
+
+    }
+
 
     //return vehicles list
     public ArrayList<Vehicle> getAllVehicles() {

@@ -7,6 +7,7 @@ public class DealershipFileManager {
     public static Dealership getDealership() {
 
         try {
+            //read from file
             BufferedReader bufferedReader = new BufferedReader(new FileReader("inventory.csv"));
             String input = bufferedReader.readLine(); //read 1st line
 
@@ -29,17 +30,18 @@ public class DealershipFileManager {
                 int odometer = Integer.parseInt(vehicleDetails[6]);
                 double price = Double.parseDouble(vehicleDetails[7]);
 
+                //create new vehicle
                 Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
 
-                //TODO: add vehicle to dealership
+                //add vehicle to dealership
                 dealership.addVehicle(vehicle);
             }
-
+            bufferedReader.close();
             return dealership;
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return null;
     }

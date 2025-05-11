@@ -9,7 +9,7 @@ public class UserInterface {
 
     private void init() {
         //load dealership details
-        dealership = DealershipFileManager.getDealership();
+        this.dealership = DealershipFileManager.getDealership();
     }
 
     //Constructor
@@ -82,9 +82,9 @@ public class UserInterface {
         System.out.println("Price Request Filter");
 
         //ask the user for a starting price & ending price
-        System.out.print("Enter minimum price: ");
+        System.out.print("Enter Minimum Price: ");
         double minPrice = scanner.nextDouble();
-        System.out.print("Enter maximum price: ");
+        System.out.print("Enter Maximum Price: ");
         double maxPrice = scanner.nextDouble();
 
         ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByPrice(minPrice, maxPrice);
@@ -99,7 +99,50 @@ public class UserInterface {
         }
     }
 
+    //print model by user request
     private void processGetByMakeModelRequest() {
+        System.out.println("Make/Model Request Filter");
+        scanner.nextLine(); //eat white space
+
+        //ask user for model to filter
+        System.out.print("Enter Make: ");
+        String make = scanner.nextLine().trim();
+        System.out.print("Enter Model: ");
+        String model = scanner.nextLine().trim();
+
+        ArrayList<Vehicle> filteredVehicles = dealership.getVehiclesByMakeModel(make, model);
+
+        //Display vehicles filtered by make/model
+        if(make.isEmpty() && model.isEmpty()) {
+            System.out.println("You didn't enter any make or model to display");
+        }
+        else if (!make.isEmpty() && model.isEmpty()) {
+            System.out.println("Display Filtered Make Range");
+            if(filteredVehicles.isEmpty()) {
+                System.out.println("Sorry no vehicle of your search");
+            }
+            else {
+                displayVehicles(filteredVehicles);
+            }
+        }
+        else if (make.isEmpty() && !model.isEmpty()) {
+            System.out.println("Display Filtered Model Range");
+            if(filteredVehicles.isEmpty()) {
+                System.out.println("Sorry no vehicle of your search");
+            }
+            else {
+                displayVehicles(filteredVehicles);
+            }
+        }
+        else {
+            System.out.println("Display Filtered Make & Model Range");
+            if(filteredVehicles.isEmpty()) {
+                System.out.println("Sorry no vehicle of your search");
+            }
+            else {
+                displayVehicles(filteredVehicles);
+            }
+        }
 
     }
 
