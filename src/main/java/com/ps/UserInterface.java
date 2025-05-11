@@ -24,6 +24,7 @@ public class UserInterface {
 
     //Display all
     public void display() {
+        clearLogsFile();
         int mainMenuCommand;
 
         do {

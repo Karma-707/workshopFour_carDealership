@@ -40,7 +40,7 @@ public class DealershipFileManager {
             return dealership;
         }
         catch (IOException e) {
-            e.printStackTrace();
+            UserInterface.writeErrorsToLogsFile(e);
         }
 
         return null;
@@ -56,7 +56,6 @@ public class DealershipFileManager {
                     dealership.getPhone());
             bufferedWriter.write(firstLine);
 
-            //TODO create method
             ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
 
             for(Vehicle vehicle: vehicles) {
@@ -75,7 +74,7 @@ public class DealershipFileManager {
 
             bufferedWriter.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            UserInterface.writeErrorsToLogsFile(e);
         }
 
     }
